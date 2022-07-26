@@ -1,3 +1,32 @@
 #shopping_items {
     width: 100%;
 }
+
+td {
+    text-align: center;
+}
+
+.btn_edit {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.btn_remove {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.btn_add {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+    width: 100%;
+}
