@@ -3,9 +3,10 @@
     <head>
         <title>Shopping List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main_page.css" />
         <link rel="stylesheet" href="css/responsive.css" />
-        <link rel="stylesheet" href="css/shopping_items_table.css" />
+        <link rel="stylesheet" href="css/shopping_items_table.css" />  
     </head>
 
     <body>
@@ -20,8 +21,8 @@
                     <th>Quantity</th>
                     <th>Value</th>
                     <th>Total</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
                 </tr>
 
                 <tr>
@@ -29,8 +30,8 @@
                     <td>3</td>
                     <td>5.00</td>
                     <td>15.00</td>
-                    <td></td>
-                    <td></td>
+                    <td><button id="btnSaveEdit" class="btn_edit"><i class="fa fa-pencil"></i></button></td>
+                    <td><button id="btnSaveEdit" class="btn_remove"><i class="fa fa-trash"></i></button></td>
                 </tr>
 
                 <tr>
@@ -38,8 +39,8 @@
                     <td>1</td>
                     <td>9.50</td>
                     <td>9.50</td>
-                    <td></td>
-                    <td></td>
+                    <td><button id="btnSaveEdit" class="btn_edit"><i class="fa fa-pencil"></i></button></td>
+                    <td><button id="btnSaveEdit" class="btn_remove"><i class="fa fa-trash"></i></button></td>
                 </tr>
 
                 <tr>
@@ -47,8 +48,8 @@
                     <td>1</td>
                     <td>10.00</td>
                     <td>10.00</td>
-                    <td></td>
-                    <td></td>
+                    <td><button id="btnSaveEdit" class="btn_edit"><i class="fa fa-pencil"></i></button></td>
+                    <td><button id="btnSaveEdit" class="btn_remove"><i class="fa fa-trash"></i></button></td>
                 </tr>
 
                 <tr>
@@ -56,11 +57,17 @@
                     <td>4</td>
                     <td>2.50</td>
                     <td>10.00</td>
-                    <td></td>
-                    <td></td>
+                    <td><button id="btnSaveEdit" class="btn_edit"><i class="fa fa-pencil"></i></button></td>
+                    <td><button id="btnSaveEdit" class="btn_remove"><i class="fa fa-trash"></i></button></td>
                 </tr>
             </table>
+
+            <button id="btnSaveEdit" class="btn_add">
+                <i class="fa fa-plus"></i> Add
+            </button>
         </section>
+
+        
 
         <section class="footer">
             <div class="footer__content">
