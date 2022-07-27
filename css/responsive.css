@@ -1,0 +1,19 @@
+@media (max-width: 1000px){
+
+    .header {
+        padding: 3%;
+    }
+    
+    .shopping_items {
+        width: 100%;
+    } 
+
+    .footer {
+        padding: 3%;
+    }
+
+    .footer__content {
+        width: 100%;
+    }
+
+}

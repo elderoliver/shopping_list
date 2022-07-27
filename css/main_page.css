@@ -13,6 +13,7 @@ body {
     padding: .5%;
     box-sizing: border-box;
     font-weight: bold;
+    color: white;
 }
 
 .shopping_items {
@@ -34,4 +35,6 @@ body {
     margin: 0 auto;
     width: 20%;
     text-align: center;
+    color: white;
+    box-sizing: border-box;
 }
