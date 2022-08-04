@@ -16,4 +16,8 @@
         width: 100%;
     }
 
+    .box_edit_item__container {
+        width: 90%;
+    }
+
 }
