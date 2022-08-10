@@ -41,17 +41,21 @@ function cleanFields() {
 }
 
 function createTableButton(newItem, operation) {
-    let btn = document.createElement('input');
+    let btn = document.createElement('div');
     btn.type = 'button';
-    //btn.className = 'btn_save';
+
+    let i = document.createElement('i');
+    btn.appendChild(i);
 
     const idRow = newItem.getAttribute('id');
     if (operation === 'delete') {
-        btn.value = 'delete';
         btn.setAttribute('onclick', 'deleteRow("'+idRow+'")');
+        btn.className = 'btn_remove';
+        i.innerHTML = "<i class='fa fa-trash'></i>";
     } else if (operation === 'edit') {
-        btn.value = 'edit';
         btn.setAttribute('onclick','editRow("'+idRow+'")');
+        btn.className = 'btn_edit';
+        i.innerHTML = "<i class='fa fa-pencil'></i>";
     }
 
     return btn; 
