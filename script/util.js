@@ -4,6 +4,7 @@ function addNewItem() {
 
 function saveItem() {
     insertNewRow();
+    sumAllItems();
     boxEditItem.style.setProperty('visibility','hidden');
 }
 
@@ -67,4 +68,17 @@ function deleteRow(idRow){
 
 function editRow(idRow){
     console.log('editRow');
+}
+
+function sumAllItems(){
+    let sum = 0.0;
+    for(let i = 1; i < shoppingItems.rows.length;i++) {
+        const itemValue = parseFloat(shoppingItems.rows[i].cells.item(3).innerText);
+        sum = sum  + itemValue;
+    }
+    setFooterValue(sum);
+}
+
+function setFooterValue(value) {
+    footerContent.innerText = `Total: ${value}`;
 }
