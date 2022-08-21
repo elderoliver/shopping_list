@@ -1,36 +1,75 @@
+const INSERT = 'INSERT';
+const UPDATE = 'UPDATE';
+
+let op = {
+    operation: null,
+    idRow: null
+}
+
+function setOperation(operation,idRow) {
+    op.operation = operation;
+    op.idRow = idRow;
+}
+
 function addNewItem() {
-    boxEditItem.style.setProperty('visibility','visible');
+    setDialogVisibity(true);
+    setOperation(INSERT,null);
+}
+
+function editRow(idRow){
+    setDialogVisibity(true);
+    const row = document.getElementById(idRow);
+    editDescription.value = row.cells.item(0).innerText;
+    editQuantity.value = row.cells.item(1).innerText;
+    editValue.value = row.cells.item(2).innerText;
+    setOperation(UPDATE,idRow);
+}
+
+function deleteRow(idRow){
+    if (window.confirm('Do you want to delete this item?')){
+        const row = document.getElementById(idRow);
+        row.remove(); 
+        sumAllItems();
+    }
 }
 
 function saveItem() {
-    insertNewRow();
+    insertUpdateRow();
     sumAllItems();
-    boxEditItem.style.setProperty('visibility','hidden');
+    setDialogVisibity(false);
 }
 
-function insertNewRow() {
-    const newItem  = shoppingItems.insertRow(1);
-    
-    const rowId = shoppingItems.rows.length;
-    newItem.setAttribute('id', `row${rowId}`);
+function insertUpdateRow() {
 
-    let colDescription = newItem.insertCell(0);
-    let colQuantity = newItem.insertCell(1);
-    let colValue = newItem.insertCell(2);
-    let colTotal = newItem.insertCell(3);
-    let colEdit = newItem.insertCell(4);
-    let colDelete = newItem.insertCell(5);
-    
-    colDescription.innerText = editDescription.value;
-    colQuantity.innerText = editQuantity.value;
-    colValue.innerText = editValue.value;
-    colTotal.innerText = parseFloat(editQuantity.value) * parseFloat(editValue.value);
+    if (op.operation === INSERT) {
+        const newItem  = shoppingItems.insertRow(1);
+        const rowId = shoppingItems.rows.length;
+        newItem.setAttribute('id', `row${rowId}`);
+        let colDescription = newItem.insertCell(0);
+        let colQuantity = newItem.insertCell(1);
+        let colValue = newItem.insertCell(2);
+        let colTotal = newItem.insertCell(3);
+        let colEdit = newItem.insertCell(4);
+        let colDelete = newItem.insertCell(5);
+        
+        colDescription.innerText = editDescription.value;
+        colQuantity.innerText = editQuantity.value;
+        colValue.innerText = editValue.value;
+        colTotal.innerText = parseFloat(editQuantity.value) * parseFloat(editValue.value);
 
-    const btnEdit = createTableButton(newItem,'edit');
-    colEdit.appendChild(btnEdit);
+        const btnEdit = createTableButton(newItem,'edit');
+        colEdit.appendChild(btnEdit);
 
-    const btnDelete = createTableButton(newItem,'delete'); 
-    colDelete.appendChild(btnDelete);  
+        const btnDelete = createTableButton(newItem,'delete'); 
+        colDelete.appendChild(btnDelete);  
+    } else if (op.operation === UPDATE){
+        const row = document.getElementById(op.idRow);
+        console.log(op);
+        row.cells.item(0).innerText = editDescription.value; 
+        row.cells.item(1).innerText = editQuantity.value;
+        row.cells.item(2).innerText = editValue.value;
+        row.cells.item(3).innerText = parseFloat(editQuantity.value) * parseFloat(editValue.value);
+    }
     
     cleanFields();
 }
@@ -39,6 +78,7 @@ function cleanFields() {
     editDescription.value = '';
     editQuantity.value = '';
     editValue.value = '';
+    setOperation(null,null);
 }
 
 function createTableButton(newItem, operation) {
@@ -62,17 +102,6 @@ function createTableButton(newItem, operation) {
     return btn; 
 }
 
-function deleteRow(idRow){
-    if (window.confirm('Do you want to delete this item?')){
-        const row = document.getElementById(idRow);
-        row.remove(); 
-        sumAllItems();
-    }
-}
-
-function editRow(idRow){
-    console.log('editRow');
-}
 
 function sumAllItems(){
     let sum = 0.0;
@@ -85,4 +114,9 @@ function sumAllItems(){
 
 function setFooterValue(value) {
     footerContent.innerText = `Total: ${value}`;
+}
+
+function setDialogVisibity(isVisible) {
+    const strProperty = isVisible ? 'visible' : 'hidden'; 
+    boxEditItem.style.setProperty('visibility',strProperty);
 }
