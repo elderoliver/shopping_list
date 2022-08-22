@@ -34,9 +34,40 @@ function deleteRow(idRow){
 }
 
 function saveItem() {
-    insertUpdateRow();
-    sumAllItems();
+    if (validateFields()){
+        insertUpdateRow();
+        sumAllItems();
+        setDialogVisibity(false);
+    }
+}
+
+function cancelItem(){
     setDialogVisibity(false);
+    cleanFields();
+}
+
+function validateFields(){
+    try {
+        const quantity = parseFloat(editQuantity.value);
+        const value = parseFloat(editValue.value);
+        
+        if ((editDescription.value === '') || (editDescription.value === null)){
+            alert('Please add a Description!');
+            return false;
+        } else if (!isNumber(quantity)) {
+            alert('Please add a Quantity!');
+            return false;
+        } else if (!isNumber(value)) {
+            alert('Please add a Value');
+            return false
+        } else {
+            return true;
+        }
+    } catch (error) {
+        alert(`An error has acurred! ${error}`);
+        return false; 
+    }
+    
 }
 
 function insertUpdateRow() {
@@ -119,4 +150,11 @@ function setFooterValue(value) {
 function setDialogVisibity(isVisible) {
     const strProperty = isVisible ? 'visible' : 'hidden'; 
     boxEditItem.style.setProperty('visibility',strProperty);
+}
+
+function isNumber(value){
+    if (isNaN(value)){
+        return false;
+    }
+    return typeof value == 'number';
 }

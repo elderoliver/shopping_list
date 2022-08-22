@@ -10,6 +10,7 @@ const btnOpenEdit = document.getElementById("btnOpenEdit");
 const btnOpenDelete = document.getElementById("btnOpenDelete");
 
 const btnSave = document.getElementById("btnSave");
+const btnCancel = document.getElementById("btnCancel");
 
 btnNewItem.addEventListener("click", () => {
     addNewItem();
@@ -17,4 +18,8 @@ btnNewItem.addEventListener("click", () => {
 
 btnSave.addEventListener("click", ()=> {
     saveItem();
+});
+
+btnCancel.addEventListener('click', () => {
+    cancelItem();
 });
